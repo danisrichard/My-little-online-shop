@@ -4,8 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.project02.main.dao.UserRepository;
 import com.project02.main.entity.User;
+import com.project02.main.service.UserService;
+
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,14 +20,17 @@ public class IndexPageController {
 
     private static final Logger logger = LogManager.getLogger(IndexPageController.class);
 	
-    //UserRepository userRepository;
+    @Autowired
+    UserService userService;
     
 	@GetMapping("/")
 	public String loadIndexPage() {
 		
-		Long id = (long) 2;
+		Long id = (long) 1;
 		
-		//Optional<User> userName = userRepository.findById(id);
+		Optional<User> listObject = userService.findByID(id);
+		
+		logger.info(listObject.get().toString());
 		
 		logger.info("it's work");
 		

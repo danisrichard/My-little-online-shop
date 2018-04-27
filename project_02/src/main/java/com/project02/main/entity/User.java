@@ -2,20 +2,18 @@ package com.project02.main.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import org.springframework.data.annotation.Id;
+import javax.persistence.Id;
 
 @Entity
 @Table(name = "USER_TABLE")
 public class User {
 
+	
 	@Id
 	@Column(name ="user_id")
-	private String id;
+	private Long id;
 	
 	@Column(name = "user_firstname")
 	private String userFirstName;
@@ -27,11 +25,11 @@ public class User {
 		
 	}
 
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -50,6 +48,10 @@ public class User {
 	public void setUserLastName(String userLastName) {
 		this.userLastName = userLastName;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", userFirstName=" + userFirstName + ", userLastName=" + userLastName + "]";
+	}
 	
 }
