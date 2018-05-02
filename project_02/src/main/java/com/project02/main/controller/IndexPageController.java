@@ -2,15 +2,10 @@ package com.project02.main.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.project02.main.entity.User;
 import com.project02.main.service.UserService;
-
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
-
-import java.util.List;
-import java.util.Optional;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -24,15 +19,11 @@ public class IndexPageController {
     UserService userService;
     
 	@GetMapping("/")
-	public String loadIndexPage() {
+	public String loadIndexPage(Model model) {
 		
-		Long id = (long) 1;
+		logger.info(userService.findByID((long) 1).get().toString());
 		
-		Optional<User> listObject = userService.findByID(id);
-		
-		logger.info(listObject.get().toString());
-		
-		logger.info("it's work");
+		model.addAttribute("getUserName",userService.findByID((long) 1).get().toString());
 		
 		return "index";
 	}

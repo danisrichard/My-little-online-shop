@@ -9,7 +9,6 @@ import javax.persistence.Id;
 @Entity
 @Table(name = "USER_TABLE")
 public class User {
-
 	
 	@Id
 	@Column(name ="user_id")
