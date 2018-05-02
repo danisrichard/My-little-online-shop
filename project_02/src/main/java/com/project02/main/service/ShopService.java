@@ -1,8 +1,11 @@
 package com.project02.main.service;
 
-import org.springframework.stereotype.Service;
+import java.util.List;
 
-@Service
-public class ShopService {
+import com.project02.main.entity.Product;
+
+public interface ShopService {
+	
+	List<Product> getAllProduct();
 	
 }

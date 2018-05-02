@@ -21,9 +21,9 @@ public class IndexPageController {
 	@GetMapping("/")
 	public String loadIndexPage(Model model) {
 		
-		logger.info(userService.findByID((long) 1).get().toString());
+		logger.info(userService.getUserByID((long) 1).get().toString());
 		
-		model.addAttribute("getUserName",userService.findByID((long) 1).get().toString());
+		model.addAttribute("getUserName","ricsko");
 		
 		return "index";
 	}

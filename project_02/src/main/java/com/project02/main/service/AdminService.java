@@ -1,8 +1,6 @@
 package com.project02.main.service;
 
-import org.springframework.stereotype.Service;
+public interface AdminService {
 
-@Service
-public class AdminService {
 
 }
