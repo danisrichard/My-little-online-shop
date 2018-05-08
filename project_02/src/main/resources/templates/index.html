@@ -1,21 +1,11 @@
 <!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head :: head"></head>
 <body>
-	<div
-		class="uk-background-cover uk-position-cover uk-paneluk-flex-middle  index-background">
-		<h1>Welcome</h1>
-
-		<h3 th:text="${getUserName}"></h3>
-
-		<h1 th:text="#{greeting}"></h1>
-
-		<span th:text="#{lang.change}"></span>: <select id="locales">
-			<option value=""></option>
-			<option value="en" th:text="#{lang.eng}"></option>
-			<option value="ger" th:text="#{lang.ger}"></option>
-		</select>
-	</div>
+<div id="navbar" class="uk-padding-small" th:replace="fragments/navbar::navbar"></div>
+<div class="uk-container">
+    <h2 class="uk-padding-large" th:text="#{greeting}"></h2>
+</div>
 </body>
 </html>

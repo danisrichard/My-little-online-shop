@@ -1,6 +1,7 @@
 package com.project02.main.entity;
 
 import java.util.Collection;
+import java.util.Collections;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -58,6 +59,7 @@ public class User {
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Collection<Roles> roles;
+    // return collection
 
     public Long getId() {
         return id;

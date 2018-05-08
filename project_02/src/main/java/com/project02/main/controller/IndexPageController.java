@@ -14,17 +14,11 @@ import org.apache.logging.log4j.Logger;
 public class IndexPageController {
 
     private static final Logger logger = LogManager.getLogger(IndexPageController.class);
-	
-    @Autowired
-    UserService userService;
     
 	@GetMapping("/")
 	public String loadIndexPage(Model model) {
-		
-		logger.info(userService.getUserByID((long) 1).get().toString());
-		
-		model.addAttribute("getUserName","ricsko");
-		
+		logger.info("work");
+
 		return "index";
 	}
 	
