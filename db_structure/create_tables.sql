@@ -8,7 +8,7 @@ DROP TABLE USER_ROLE;
 */
 
 CREATE TABLE USER_TABLE(
-    user_id VARCHAR2(150) PRIMARY KEY,
+    user_id VARCHAR2(150),
     email VARCHAR2(150),
     password VARCHAR2(150), 
     username VARCHAR2(150),  --USER
@@ -52,33 +52,7 @@ VALUES (2, 'ROLE_USER');
 
 COMMIT;
 
-/*
-INSERT INTO USERS_ROLE_TABLE (user_id, role_id)
-VALUES (1, 1);
-INSERT INTO USERS_ROLE_TABLE (user_id, role_id)
-VALUES (1, 2);
-INSERT INTO USERS_ROLE_TABLE (user_id, role_id)
-VALUES (2, 2);
-INSERT INTO USERS_ROLE_TABLE (user_id, role_id)
-VALUES (3, 2); */
 
-/* DEMO INSERT */
 
-/*
-INSERT INTO USER_TABLE (user_id, password, email, username, first_name, last_name, active)
-VALUES
-  (1, '$2a$06$OAPObzhRdRXBCbk7Hj/ot.jY3zPwR8n7/mfLtKIgTzdJa4.6TwsIm', 'dsa@mail.com', 'user', 'Name', 'Surname',
-   1);
-INSERT INTO USER_TABLE (user_id, password, email, username, first_name, last_name, active)
-VALUES
-  (2, '$2a$06$OAPObzhRdRXBCbk7Hj/ot.jY3zPwR8n7/mfLtKIgTzdJa4.6TwsIm', 'richard@gmail.com', 'ricskooo', 'Richard', 'Danis', 1);
-INSERT INTO USER_TABLE (user_id, password, email, username, first_name, last_name, active)
-VALUES 
-  (3, '$2a$06$OAPObzhRdRXBCbk7Hj/ot.jY3zPwR8n7/mfLtKIgTzdJa4.6TwsIm', 'test@gmail.com', 'namesurname', 'Name',
-        'Surname', 1);
-        
-COMMIT;
-*/
-
---CREATE SEQUENCE insertseq INCREMENT BY 1;
+CREATE SEQUENCE insertseq INCREMENT BY 1;
 

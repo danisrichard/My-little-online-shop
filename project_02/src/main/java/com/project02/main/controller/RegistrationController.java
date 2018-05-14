@@ -2,8 +2,6 @@ package com.project02.main.controller;
 
 import com.project02.main.entity.User;
 import com.project02.main.service.UserService;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;

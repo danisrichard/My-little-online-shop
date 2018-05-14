@@ -1,21 +1,36 @@
 <nav xmlns:th="http://www.thymeleaf.org"
-        th:fragment="navbar"
-        class="uk-navbar-container" uk-navbar>
-            <div class="uk-navbar-left">
-                <ul class="uk-navbar-nav">
-                    <li class="uk-active"><a href="#">Active</a></li>
-                    <li>
-                        <a href="#">Parent</a>
-                        <div class="uk-navbar-dropdown">
-                            <ul class="uk-nav uk-navbar-dropdown-nav">
-                                <li class="uk-active"><a href="#">Active</a></li>
-                                <li><a href="#">Item</a></li>
-                                <li><a href="#">Item</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li><a href="#">Item</a></li>
-                </ul>
+     th:fragment="navbar"
+     class="uk-navbar-container" uk-navbar>
+    <div class="uk-navbar-left">
+        <ul class="uk-navbar-nav">
+            <li class="uk-active"><a href="#">Active</a></li>
+            <li>
+                <a href="#">Parent</a>
+                <div class="uk-navbar-dropdown">
+                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                        <li class="uk-active"><a href="#">Active</a></li>
+                        <li><a href="#">Item</a></li>
+                        <li><a href="#">Item</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li><a href="#">Item</a></li>
+        </ul>
 
+    </div>
+    <div class="uk-navbar-right">
+        <div class="uk-navbar-item">
+            <span uk-icon="user"></span>
+        </div>
+
+        <div class="uk-navbar-item uk-margin-large-right">
+                <button class="uk-button uk-button-default" type="button"><span uk-icon="cart">
+            </span></button>
+                <div uk-dropdown="mode: click" class="uk-width-large">
+                        <h2 th:text="#{cart.actual-item}"></h2>
+                        <div  th:replace="shop_cart/shop-cart-review-mode" id="cart-review"></div>
+                        <button class="uk-button uk-button-default" th:text="#{cart.buy-it}"> </button>
+                </div>
             </div>
+    </div>
 </nav>
