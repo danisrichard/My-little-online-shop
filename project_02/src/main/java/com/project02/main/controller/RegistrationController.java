@@ -30,7 +30,7 @@ public class RegistrationController {
         ModelAndView modelAndView = new ModelAndView();
         User user = new User();
 
-        logger.info(user.getEmail() + " - " + user.getUsername());
+        logger.info(" USER_INFO: " + user.getEmail() + " - " + user.getUsername());
 
         modelAndView.addObject("user", user);
         modelAndView.setViewName("/registration");
@@ -42,13 +42,11 @@ public class RegistrationController {
 
         if (userService.findByEmail(user.getEmail()).isPresent()) {
             bindingResult
-                    .rejectValue("email", "error.user",
-                            "There is already a user registered with the email provided");
+                    .rejectValue("email", "error.user");
         }
         if (userService.findByUsername(user.getUsername()).isPresent()) {
             bindingResult
-                    .rejectValue("username", "error.user",
-                            "There is already a user registered with the username provided");
+                    .rejectValue("username", "error.user");
         }
 
         ModelAndView modelAndView = new ModelAndView();

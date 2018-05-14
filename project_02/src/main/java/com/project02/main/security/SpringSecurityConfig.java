@@ -1,5 +1,7 @@
 package com.project02.main.security;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -24,6 +26,8 @@ import javax.sql.DataSource;
 
 @Configuration
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
+
+    private static final Logger logger = LogManager.getLogger(SpringSecurityConfig.class);
 
     // idk how it work 100%
 
@@ -58,7 +62,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                //.loginPage("/login")
+                .loginPage("/login")
                 .defaultSuccessUrl("/home")
                 .permitAll()
                 .and()
@@ -79,6 +83,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authoritiesByUsernameQuery(rolesQuery)
                 .dataSource(dataSource)
                 .passwordEncoder(passwordEncoder());
+
+        logger.info("userQuery" + usersQuery + " - rolesQuery " + rolesQuery);
 
         //memo autho
         auth.inMemoryAuthentication()

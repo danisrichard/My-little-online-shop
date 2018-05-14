@@ -13,11 +13,9 @@ import org.apache.logging.log4j.Logger;
 @Controller
 public class IndexPageController {
 
-    private static final Logger logger = LogManager.getLogger(IndexPageController.class);
-    
+
 	@GetMapping("/")
 	public String loadIndexPage(Model model) {
-		logger.info("work");
 
 		return "index";
 	}

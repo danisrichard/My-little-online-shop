@@ -3,16 +3,12 @@ package com.project02.main.service.impl;
 import java.util.*;
 
 import com.project02.main.dao.RoleRepository;
-import com.project02.main.entity.Roles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.project02.main.dao.UserRepository;
 import com.project02.main.entity.User;
 import com.project02.main.service.UserService;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
-import javax.management.relation.Role;
-
 
 @Service
 public class UserServiceImpl implements UserService {
