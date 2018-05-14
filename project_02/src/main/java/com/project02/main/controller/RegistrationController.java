@@ -16,7 +16,7 @@ import javax.validation.Valid;
 @Controller
 public class RegistrationController {
 
-    private static final Logger logger = LogManager.getLogger(RegistrationController.class);
+   // private static final Logger logger = LogManager.getLogger(RegistrationController.class);
 
     private final UserService userService;
 
@@ -30,8 +30,6 @@ public class RegistrationController {
         ModelAndView modelAndView = new ModelAndView();
         User user = new User();
 
-        logger.info(" USER_INFO: " + user.getEmail() + " - " + user.getUsername());
-
         modelAndView.addObject("user", user);
         modelAndView.setViewName("/registration");
         return modelAndView;
@@ -40,6 +38,9 @@ public class RegistrationController {
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public ModelAndView createNewUser(@Valid User user, BindingResult bindingResult) {
 
+        /*
+        // thymleaf exception
+
         if (userService.findByEmail(user.getEmail()).isPresent()) {
             bindingResult
                     .rejectValue("email", "error.user");
@@ -47,18 +48,19 @@ public class RegistrationController {
         if (userService.findByUsername(user.getUsername()).isPresent()) {
             bindingResult
                     .rejectValue("username", "error.user");
-        }
+        }*/
 
         ModelAndView modelAndView = new ModelAndView();
 
         if (bindingResult.hasErrors()) {
             modelAndView.setViewName("/registration");
         } else {
+
             userService.saveUser(user);
 
             modelAndView.addObject("successMessage", "User has been registered successfully");
             modelAndView.addObject("user", new User());
-            modelAndView.setViewName("/registration");
+            modelAndView.setViewName("/login");
         }
         return modelAndView;
     }

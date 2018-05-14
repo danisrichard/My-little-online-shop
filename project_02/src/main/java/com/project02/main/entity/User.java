@@ -2,12 +2,7 @@ package com.project02.main.entity;
 
 import java.util.Collection;
 import java.util.Collections;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
@@ -15,17 +10,13 @@ import org.hibernate.validator.constraints.Length;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-
 @Entity
 @Table(name = "user_table")
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name="seq" ,sequenceName = "insertseq")
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq")
     @Column(name = "user_id")
     private Long id;
 
@@ -57,7 +48,7 @@ public class User {
     private int active;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    @JoinTable(name = "users_role_table", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Collection<Roles> roles;
     // return collection
 

@@ -1,9 +1,11 @@
---DROP TABLE USER_TABLE;
---DROP TABLE USERS_ROLE_TABLE;
---DROP TABLE ALL_ROLE_TABLE;
---DROP TABLE product_table;
---DROP TABLE order_table;
---DROP TABLE USER_ROLE;
+/*
+DROP TABLE USER_TABLE;
+DROP TABLE USERS_ROLE_TABLE;
+DROP TABLE ALL_ROLE_TABLE;
+DROP TABLE product_table;
+DROP TABLE order_table;
+DROP TABLE USER_ROLE;
+*/
 
 CREATE TABLE USER_TABLE(
     user_id VARCHAR2(150) PRIMARY KEY,
@@ -17,10 +19,7 @@ CREATE TABLE USER_TABLE(
 
 CREATE TABLE USERS_ROLE_TABLE(
     USER_ID VARCHAR2(150),
-    ROLE_ID VARCHAR2(150),
-    CONSTRAINT fk_user_table
-    FOREIGN KEY (USER_ID)
-    REFERENCES USER_TABLE(user_id)
+    ROLE_ID VARCHAR2(150)
 );
 
 CREATE TABLE ALL_ROLE_TABLE(
@@ -53,6 +52,7 @@ VALUES (2, 'ROLE_USER');
 
 COMMIT;
 
+/*
 INSERT INTO USERS_ROLE_TABLE (user_id, role_id)
 VALUES (1, 1);
 INSERT INTO USERS_ROLE_TABLE (user_id, role_id)
@@ -60,10 +60,11 @@ VALUES (1, 2);
 INSERT INTO USERS_ROLE_TABLE (user_id, role_id)
 VALUES (2, 2);
 INSERT INTO USERS_ROLE_TABLE (user_id, role_id)
-VALUES (3, 2);
+VALUES (3, 2); */
 
 /* DEMO INSERT */
 
+/*
 INSERT INTO USER_TABLE (user_id, password, email, username, first_name, last_name, active)
 VALUES
   (1, '$2a$06$OAPObzhRdRXBCbk7Hj/ot.jY3zPwR8n7/mfLtKIgTzdJa4.6TwsIm', 'dsa@mail.com', 'user', 'Name', 'Surname',
@@ -77,3 +78,7 @@ VALUES
         'Surname', 1);
         
 COMMIT;
+*/
+
+--CREATE SEQUENCE insertseq INCREMENT BY 1;
+

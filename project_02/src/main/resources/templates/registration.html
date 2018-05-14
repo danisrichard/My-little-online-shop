@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Registration</title>
@@ -10,7 +10,7 @@
 <div>
 <div class="">
 
-    <div class="" th:if="${successMessage}" th:utext="${successMessage}"></div>
+    <div class="" th:if="${successMessage}" th:text="${successMessage}"></div>
 
     <div class="">
         <form autocomplete="off" action="#" th:action="@{/registration}"
