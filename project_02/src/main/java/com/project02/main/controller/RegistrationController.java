@@ -14,12 +14,8 @@ import javax.validation.Valid;
 @Controller
 public class RegistrationController {
 
-    private final UserService userService;
-
     @Autowired
-    public RegistrationController(UserService userService) {
-        this.userService = userService;
-    }
+    private UserService userService;
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public ModelAndView registration() {
@@ -34,24 +30,11 @@ public class RegistrationController {
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public ModelAndView createNewUser(@Valid User user, BindingResult bindingResult) {
 
-        /*
-        // thymleaf exception
-
-        if (userService.findByEmail(user.getEmail()).isPresent()) {
-            bindingResult
-                    .rejectValue("email", "error.user");
-        }
-        if (userService.findByUsername(user.getUsername()).isPresent()) {
-            bindingResult
-                    .rejectValue("username", "error.user");
-        }*/
-
         ModelAndView modelAndView = new ModelAndView();
 
         if (bindingResult.hasErrors()) {
             modelAndView.setViewName("/registration");
         } else {
-
             userService.saveUser(user);
 
             modelAndView.addObject("successMessage", "User has been registered successfully");

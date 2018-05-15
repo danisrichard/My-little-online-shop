@@ -1,7 +1,6 @@
 package com.project02.main.entity;
 
 import java.util.Collection;
-import java.util.Collections;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
@@ -21,7 +20,7 @@ public class User {
     private Long id;
 
     @Column(name = "email", unique = true, nullable = false)
-    @Email(message = "*Please provide a valid Email")
+    @Email(message = "dsdasdasad")
     @NotEmpty(message = "*Please provide an email")
     private String email;
 
