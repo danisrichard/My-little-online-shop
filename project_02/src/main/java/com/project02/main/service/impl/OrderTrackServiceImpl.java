@@ -1,5 +1,6 @@
 package com.project02.main.service.impl;
 
+import com.project02.main.entity.OrderEntity;
 import com.project02.main.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,10 +14,10 @@ import java.util.List;
 public class OrderTrackServiceImpl implements OrderTrackService {
 
 	@Autowired
-	private OrderTrackRepository orderFindRepostiory;
+	private OrderTrackRepository orderTrackRepository;
 
 	@Override
-	public List<Product> getProductsByID(Long orderId) {
+	public List<OrderEntity> getProductsByID(Long orderId) {
 		return null;
 	}
 
