@@ -14,8 +14,6 @@ import javax.validation.Valid;
 @Controller
 public class RegistrationController {
 
-   // private static final Logger logger = LogManager.getLogger(RegistrationController.class);
-
     private final UserService userService;
 
     @Autowired
