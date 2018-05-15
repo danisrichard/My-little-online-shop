@@ -27,7 +27,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     private Map<Product, Integer> productListMap = new HashMap<>();
 
     @Override
-    public void addProduct(Product product) {
+    public void addProduct(long product) {
         if (productListMap.containsKey(product)) {
             productListMap.replace(product, productListMap.get(product) + 1);
         } else {
@@ -36,7 +36,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     }
 
     @Override
-    public void removeProduct(Product product) {
+    public void removeProduct(long product) {
         if(productListMap.containsKey(product)){
             if(productListMap.get(product) > 1){
                 productListMap.replace(product,productListMap.get(product) -1);

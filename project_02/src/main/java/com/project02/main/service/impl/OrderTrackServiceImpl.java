@@ -4,16 +4,16 @@ import com.project02.main.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.project02.main.dao.OrderFindRepostiory;
-import com.project02.main.service.OrderFindService;
+import com.project02.main.dao.OrderTrackRepository;
+import com.project02.main.service.OrderTrackService;
 
 import java.util.List;
 
 @Service
-public class OrderFindServiceImpl implements OrderFindService{
+public class OrderTrackServiceImpl implements OrderTrackService {
 
 	@Autowired
-	private OrderFindRepostiory orderFindRepostiory;
+	private OrderTrackRepository orderFindRepostiory;
 
 	@Override
 	public List<Product> getProductsByID(Long orderId) {

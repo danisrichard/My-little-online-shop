@@ -7,9 +7,9 @@ import java.util.Map;
 
 public interface ShoppingCartService {
 
-    void addProduct(Product product);
+    void addProduct(long product);
 
-    void removeProduct(Product product);
+    void removeProduct(long product);
 
     Map<Product, Integer> getProductsInCart();
 
