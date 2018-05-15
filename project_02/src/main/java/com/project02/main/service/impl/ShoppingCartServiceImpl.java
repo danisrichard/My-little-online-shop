@@ -22,7 +22,7 @@ import static org.springframework.web.context.WebApplicationContext.*;
 public class ShoppingCartServiceImpl implements ShoppingCartService {
 
     @Autowired
-    ProductRepository productRepository;
+    private ProductRepository productRepository;
 
     private Map<Product, Integer> productListMap = new HashMap<>();
 
