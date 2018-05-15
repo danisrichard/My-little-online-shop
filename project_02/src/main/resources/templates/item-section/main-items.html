@@ -3,4 +3,14 @@
      class="uk-container">
     <h3> Item section </h3>
 
+    <div class=" th:each="product : ${products}">
+        <div class="">
+            <h1 th:text="${product.name}"></h1>
+        </div>
+        <h3 th:text="${product.description}" class="">Description</h3>
+        <div class="row panel-footer">
+            <div th:inline="text" class="">Ár: [[${product.price}]] $</div>
+            <div th:inline="text" class="">Raktár: [[${product.quantity}]]</div>
+        </div>
+    </div>
 </div>

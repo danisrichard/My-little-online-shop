@@ -1,12 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<div xmlns:th="http://www.thymeleaf.org"
+     th:fragment="pagination-section">
+    <div class="" th:with="baseUrl=${URLparameter}">
+        <span th:if="${pager.indexOutOfBounds()}">
+            Page is out of bounds. Go back to <a class=""
+                                                 th:href="@{${baseUrl}(page=1)}"></a>.
+        </span>
 
+        <span th:unless="${pager.indexOutOfBounds()}">
 
+            <span th:if="${pager.hasPrevious()}">
+                <a class=""
+                   th:href="@{${baseUrl}(page=1)}">first</a>
+                <a class=""
+                   th:href="@{${baseUrl}(page=${pager.getPageIndex() - 1})}"> previous</a>
+            </span>
 
-</body>
-</html>
+            <span th:if="${pager.getTotalPages() != 1}"
+                  th:text="' dsa ' + ${pager.getPageIndex()} + ' - ' + ${pager.getTotalPages()} ">
+            </span>
+
+            <span th:if="${pager.hasNext()}">
+                <a class=""
+                   th:href="@{${baseUrl}(page=${pager.getPageIndex() + 1})}">next</a>
+                <a class=""
+                   th:href="@{${baseUrl}(page=${pager.getTotalPages()})}">last</a>
+            </span>
+        </span>
+    </div>
+</div>

@@ -6,7 +6,10 @@
 <div id="navbar" class="uk-padding-small" th:replace="fragments/navbar::navbar"></div>
 <div class="uk-container">
     <h2 class="uk-padding-large" th:text="#{greeting}"></h2>
+
     <div id="main-item" th:replace="item-section/main-items"></div>
+    <div id="pagination-section"  th:replace="fragments/pagination"></div>
+
 </div>
 </body>
 </html>
