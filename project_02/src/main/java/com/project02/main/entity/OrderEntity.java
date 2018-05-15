@@ -7,15 +7,13 @@ import javax.persistence.Table;
 
 
 //rendelés osztály, ebben majd a productok gyüjtő helye lesz
-@Entity
+
 @Table(name ="order_table")
 public class OrderEntity {
 	
 	@Id
 	@Column(name="order_id")
-	Long orderid;
+	private Long orderid;
 	
-	public OrderEntity() {
-		
-	}
+
 }

@@ -18,7 +18,6 @@ public class UserServiceImpl implements UserService {
 	private final PasswordEncoder passwordEncoder;
 
 	private static final String USER_ROLE = "ROLE_USER";
-    //private List<Roles> list;
 
     @Autowired
 	public UserServiceImpl(UserRepository userRepo, RoleRepository roleRepo, PasswordEncoder pwEnc) {

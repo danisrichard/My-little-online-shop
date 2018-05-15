@@ -15,21 +15,10 @@ import org.springframework.security.web.access.AccessDeniedHandler;
 
 import javax.sql.DataSource;
 
-/**
- * HTTPSecurity configurer
- * - roles ADMIN allow to access /admin/**
- * - roles USER allow to access /user/** and /newPost/**
- * - anybody can visit /, /home, /about, /registration, /error, /blog/**, /post/**, /h2-console/**
- * - every other page needs authentication
- * - custom 403 access denied handler
- */
-
 @Configuration
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private static final Logger logger = LogManager.getLogger(SpringSecurityConfig.class);
-
-    // idk how it work 100%
 
     private final AccessDeniedHandler accessDeniedHandler;
 
@@ -76,7 +65,6 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 
-        //db autho
         auth.
                 jdbcAuthentication()
                 .usersByUsernameQuery(usersQuery)
@@ -84,9 +72,6 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .dataSource(dataSource)
                 .passwordEncoder(passwordEncoder());
 
-        logger.info("userQuery" + usersQuery + " - rolesQuery " + rolesQuery);
-
-        //memo autho
         auth.inMemoryAuthentication()
                 .withUser(adminUsername).password(adminPassword).roles("ADMIN");
     }
