@@ -8,6 +8,7 @@ import javax.persistence.Table;
 //rendelés osztály, ebben majd a productok gyüjtő helye lesz
 
 @Table(name ="order_table")
+@Entity
 public class OrderEntity {
 	
 	@Id

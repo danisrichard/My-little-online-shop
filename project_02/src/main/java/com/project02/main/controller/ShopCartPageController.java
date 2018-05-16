@@ -1,5 +1,6 @@
 package com.project02.main.controller;
 
+import com.project02.main.entity.Product;
 import com.project02.main.service.ProductService;
 import com.project02.main.service.ShoppingCartService;
 import org.apache.logging.log4j.LogManager;
@@ -23,22 +24,28 @@ public class ShopCartPageController {
 
     @GetMapping("/shoppingcart")
     public String shoppingCart(Model model){
-        model.addAttribute("shopProducts", shoppingCartService.getProductsInCart());
 
+        model.addAttribute("shopProducts", shoppingCartService.getProductsInCart());
+        model.addAttribute("totalValue",shoppingCartService.getTotal());
         return null;
     }
 
     @GetMapping("/addProductItem")
-    public String addProductToCart(@PathVariable("itemId") long id){
+    public String addProductToCart(@PathVariable("itemId") Long productId){
 
-        shoppingCartService.addProduct(id);
+        logger.info("productID: addtoCart: " + productId);
+
+
+        productService.findById(productId).ifPresent(shoppingCartService::addProduct);
         return null;
     }
 
     @GetMapping("/removeProductItem")
-    public String removeProductFromCart(@PathVariable("itemId") long id){
+    public String removeProductFromCart(@PathVariable("itemId") Long productId){
 
-        shoppingCartService.removeProduct(id);
+        logger.info("productID: removeFromCart: " + productId);
+
+        productService.findById(productId).ifPresent(shoppingCartService::removeProduct);
         return null;
     }
 }

@@ -13,7 +13,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 @Controller
 public class IndexPageController {
@@ -30,7 +33,7 @@ public class IndexPageController {
 
 		int ePage = (pageNumb.orElse(0) < 1) ? INITIAL_PAGE : pageNumb.get() - 1;
 
-		Page<Product> products = productService.findAllProductPage(PageRequest.of(ePage, 5));
+		Page<Product> products = productService.findAllProductPage( PageRequest.of(ePage, 5));
 		Pager pager = new Pager(products);
 
 		model.addAttribute("products", products);

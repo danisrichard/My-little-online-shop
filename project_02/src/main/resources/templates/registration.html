@@ -1,65 +1,67 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Registration</title>
-</head>
+<head th:replace="fragments/head :: head"></head>
 <body>
-<h1>Reg fck</h1>
+<div class="uk-container">
+    <h1>Reg fck</h1>
 
-<div>
-<div class="">
+    <div class="uk-margin">
 
-    <div class="" th:if="${successMessage}" th:text="${successMessage}"></div>
+        <div class="" th:if="${successMessage}" th:text="${successMessage}"></div>
 
-    <div class="">
         <form autocomplete="off" action="#" th:action="@{/registration}"
               th:object="${user}" method="post" role="form">
 
-            <div class="">
-                <label th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
-                       class="alert alert-danger"></label>
-                <input type="text" th:field="*{name}" placeholder="Name"
-                       class=""/>
-            </div>
-
-            <div class="">
-                <label th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"
-                       class="alert alert-danger"></label>
-                <input type="text" th:field="*{lastName}" placeholder="Last Name"
-                       class=""/>
-            </div>
-
-            <div class="">
-                <label th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
-                       class="alert alert-danger"></label>
-                <input type="text" th:field="*{email}" placeholder="Email"
-                       class=""/>
-            </div>
-
-            <div class="">
-                <label th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
-                       class="alert alert-danger"></label>
-                <input type="password" th:field="*{password}" placeholder="Password"
-                       class=""/>
-            </div>
-
-            <div class="">
-                <label th:if="${#fields.hasErrors('username')}" th:errors="*{username}"
-                       class="alert alert-danger"></label>
-                <input type="text" th:field="*{username}" placeholder="Username"
-                       class=""/>
-            </div>
-
-            <div class="">
-                <div class="" >
-                    <input type="submit" class="" value="Submit"/>
+            <div class="uk-margin">
+                <div class="uk-inline">
+                    <label th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+                           class="alert alert-danger"></label>
+                    <input type="text" th:field="*{name}" placeholder="Name"
+                           class="uk-input"/>
                 </div>
+            </div>
+
+            <div class="uk-margin">
+                <div class="uk-inline">
+                    <label th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"
+                           class="alert alert-danger"></label>
+                    <input type="text" th:field="*{lastName}" placeholder="Last Name"
+                           class="uk-input"/>
+                </div>
+            </div>
+
+            <div class="uk-margin">
+                <div class="uk-inline">
+                    <label th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+                           class="alert alert-danger"></label>
+                    <input type="text" th:field="*{email}" placeholder="Email"
+                           class="uk-input"/>
+                </div>
+            </div>
+
+            <div class="uk-margin">
+                <div class="uk-inline">
+                    <label th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+                           class="alert alert-danger"></label>
+                    <input type="password" th:field="*{password}" placeholder="Password"
+                           class="uk-input"/>
+                </div>
+            </div>
+
+            <div class="uk-margin">
+                <div class="uk-inline">
+                    <label th:if="${#fields.hasErrors('username')}" th:errors="*{username}"
+                           class="alert alert-danger"></label>
+                    <input type="text" th:field="*{username}" placeholder="Username"
+                           class="uk-input"/>
+                </div>
+            </div>
+
+            <div class="uk-margin">
+                <input type="submit" class="uk-button uk-button-default" value="Submit"/>
             </div>
         </form>
     </div>
-</div>
-
 </div>
 </body>
 </html>

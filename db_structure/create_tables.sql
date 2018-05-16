@@ -52,7 +52,15 @@ VALUES (2, 'ROLE_USER');
 
 COMMIT;
 
+INSERT INTO product_table (product_id,product_name,description,quantity,price) VALUES (item_insert_seq.NEXTVAL , 'Taska', 'Lorem ipsum', 1, 2500); 
+INSERT INTO product_table (product_id,product_name,description,quantity,price) VALUES (item_insert_seq.NEXTVAL , 'Lorem 1', 'Lorem ipsum', 1, 5500); 
+INSERT INTO product_table (product_id,product_name,description,quantity,price) VALUES (item_insert_seq.NEXTVAL , 'Lorem 2', 'Lorem ipsum 1', 1, 4500); 
+INSERT INTO product_table (product_id,product_name,description,quantity,price) VALUES (item_insert_seq.NEXTVAL , 'Lorem 3', 'Lorem ipsum 2', 1, 3500); 
+INSERT INTO product_table (product_id,product_name,description,quantity,price) VALUES (item_insert_seq.NEXTVAL , 'Lorem 4', 'Lorem ipsum 3', 1, 6500); 
 
+COMMIT;
 
 CREATE SEQUENCE insertseq INCREMENT BY 1;
+
+CREATE SEQUENCE item_insert_seq INCREMENT BY 1;
 
