@@ -1,6 +1,5 @@
 package com.project02.main.controller;
 
-import com.project02.main.entity.Product;
 import com.project02.main.service.ProductService;
 import com.project02.main.service.ShoppingCartService;
 import org.apache.logging.log4j.LogManager;
@@ -25,8 +24,8 @@ public class ShopCartPageController {
     @GetMapping("/shoppingcart")
     public String shoppingCart(Model model){
 
-        model.addAttribute("shopProducts", shoppingCartService.getProductsInCart());
-        model.addAttribute("totalValue",shoppingCartService.getTotal());
+        model.addAttribute("shopProducts", shoppingCartService.getAllProductsInCart());
+        model.addAttribute("totalValue",shoppingCartService.getTotalProductsValue());
         return null;
     }
 
@@ -35,8 +34,7 @@ public class ShopCartPageController {
 
         logger.info("productID: addtoCart: " + productId);
 
-
-        productService.findById(productId).ifPresent(shoppingCartService::addProduct);
+        productService.findProductById(productId).ifPresent(shoppingCartService::addProductToCart);
         return null;
     }
 
@@ -45,7 +43,7 @@ public class ShopCartPageController {
 
         logger.info("productID: removeFromCart: " + productId);
 
-        productService.findById(productId).ifPresent(shoppingCartService::removeProduct);
+        productService.findProductById(productId).ifPresent(shoppingCartService::removeProductFromCart);
         return null;
     }
 }

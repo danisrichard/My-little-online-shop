@@ -20,7 +20,7 @@ public class User {
     private Long id;
 
     @Column(name = "email", unique = true, nullable = false)
-    @Email(message = "dsdasdasad")
+    @Email(message = "Requireed")
     @NotEmpty(message = "*Please provide an email")
     private String email;
 

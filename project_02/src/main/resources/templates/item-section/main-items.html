@@ -2,15 +2,24 @@
      th:fragment="main-item"
      class="uk-container">
     <h3> Item section </h3>
+    <!--/*@thymesVar id="products" type="List"*/-->
 
-    <div class=" th:each="product : ${products}">
-        <div class="">
-            <h1 th:text="${product.name}"></h1>
-        </div>
-        <h3 th:text="${product.description}" class="">Description</h3>
-        <div class="row panel-footer">
-            <div th:inline="text" class="">Ár: [[${product.price}]] $</div>
-            <div th:inline="text" class="">Raktár: [[${product.quantity}]]</div>
+    <div class="uk-child-width-1-4@m" uk-grid>
+        <div th:each="product : ${products}">
+            <div class="uk-card uk-card-primary">
+                <div class="uk-card-media-top">
+                    <img src="https://store.storeimages.cdn-apple.com/4976/as-images.apple.com/is/image/AppleInc/aos/published/images/3/8/38/stainless/38-stainless-milanese-silver-1up?wid=1673&hei=1353&fmt=jpeg&qlt=95&op_usm=0.5,0.5&.v=1504031913562"
+                         alt="not_found">
+                </div>
+                <div>
+                    <div class="uk-card-body">
+                        <h3 class="uk-card-title" th:text="${product.name}"></h3>
+                        <h4 th:text="${product.description}" class=""></h4>
+                        <div th:inline="text" class="">Ár: [[${product.price}]] $</div>
+                        <div th:inline="text" class="">Raktár: [[${product.quantity}]]</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

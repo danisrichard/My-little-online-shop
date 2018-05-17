@@ -28,17 +28,17 @@ public class IndexPageController {
 	@Autowired
 	private ProductService productService;
 
-	@GetMapping("/home")
+	@GetMapping("/")
 	public String loadIndexPage(@RequestParam("page") Optional<Integer> pageNumb,Model model) {
 
 		int ePage = (pageNumb.orElse(0) < 1) ? INITIAL_PAGE : pageNumb.get() - 1;
 
-		Page<Product> products = productService.findAllProductPage( PageRequest.of(ePage, 5));
+		Page<Product> products = productService.findAllProductPage( PageRequest.of(ePage, 6));
 		Pager pager = new Pager(products);
 
 		model.addAttribute("products", products);
 		model.addAttribute("pager", pager);
 
-		return "/index";
+		return "index";
 	}
 }

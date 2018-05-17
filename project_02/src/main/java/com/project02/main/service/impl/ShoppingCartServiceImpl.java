@@ -24,10 +24,10 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     @Autowired
     private ProductRepository productRepository;
 
-    private Map<Product, Integer> productListMap = new HashMap<>();
+    private final Map<Product, Integer> productListMap = new HashMap<>();
 
     @Override
-    public void addProduct(Product product) {
+    public void addProductToCart(Product product) {
         if (productListMap.containsKey(product)) {
             productListMap.replace(product, productListMap.get(product) + 1);
         } else {
@@ -36,7 +36,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     }
 
     @Override
-    public void removeProduct(Product product) {
+    public void removeProductFromCart(Product product) {
         if(productListMap.containsKey(product)){
             if(productListMap.get(product) > 1){
                 productListMap.replace(product,productListMap.get(product) -1);
@@ -47,12 +47,12 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     }
 
     @Override
-    public Map<Product, Integer> getProductsInCart() {
+    public Map<Product, Integer> getAllProductsInCart() {
         return Collections.unmodifiableMap(productListMap);
     }
 
     @Override
-    public BigDecimal getTotal() {
+    public BigDecimal getTotalProductsValue() {
         return productListMap.entrySet().stream()
                 .map(e -> e.getKey().getPrice().multiply(BigDecimal.valueOf(e.getValue())))
                 .reduce(BigDecimal::add)

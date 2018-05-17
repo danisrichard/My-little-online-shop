@@ -13,30 +13,27 @@ import javax.validation.constraints.Min;
 
 import org.hibernate.validator.constraints.Length;
 
-//termék osztály
-
 @Entity
 @Table(name = "product_table")
 public class Product {
 	
     @Id
-    //@GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "product_id")
     private Long id;
 
     @Column(name = "product_name", nullable = false, unique = true)
-    @Length(min = 3, message = "*Name must have at least 5 characters")
+    @Length(min = 3 , message = "min 3 char")
     private String name;
 
     @Column(name = "description")
     private String description;
 
     @Column(name = "quantity", nullable = false)
-    @Min(value = 0, message = "*Quantity has to be non negative number")
+    @Min(value = 0,message = "0 <")
     private Integer quantity;
 
     @Column(name = "price", nullable = false)
-    @DecimalMin(value = "0.00", message = "*Price has to be non negative number")
+    @DecimalMin(value = "0.00", message="0.00 >")
     private BigDecimal price;
 
     public Long getId() {

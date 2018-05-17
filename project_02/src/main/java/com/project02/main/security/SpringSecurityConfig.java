@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.access.AccessDeniedHandler;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import javax.sql.DataSource;
 
@@ -20,12 +21,19 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private static final Logger logger = LogManager.getLogger(SpringSecurityConfig.class);
 
-    private final AccessDeniedHandler accessDeniedHandler;
+    @Autowired
+    private AccessDeniedHandler accessDeniedHandler;
+
+    @Autowired
+    private DataSource dataSource;
+
+    @Autowired
+    SpringSecurityConfig springSecurityConfig;
 
     @Value("${admin.username}")
     private String adminUsername;
 
-    @Value("${admin.username}")
+    @Value("${admin.password}")
     private String adminPassword;
 
     @Value("${queries.users-query}")
@@ -34,32 +42,28 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Value("${queries.roles-query}")
     private String rolesQuery;
 
-    final DataSource dataSource;
-
-    @Autowired
-    public SpringSecurityConfig(AccessDeniedHandler accessDeniedHandler,DataSource dataSource){
-        this.dataSource = dataSource;
-        this.accessDeniedHandler = accessDeniedHandler;
-    }
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/index", "/registration", "/error" ).permitAll()
-                .anyRequest().authenticated()
+                .anyRequest().permitAll()
+                .antMatchers("/order-confirmation").fullyAuthenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/home")
+                .defaultSuccessUrl("/home", true)
                 .permitAll()
                 .and()
                 .logout()
+                .invalidateHttpSession(true)
+                .clearAuthentication(true)
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/?logout")
                 .permitAll()
                 .and()
-                .exceptionHandling().accessDeniedHandler(accessDeniedHandler)
-                .and().headers().frameOptions().disable();
+                .exceptionHandling().accessDeniedHandler(accessDeniedHandler).accessDeniedPage("/");
+
     }
 
     @Autowired
@@ -73,7 +77,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordEncoder(passwordEncoder());
 
         auth.inMemoryAuthentication()
-                .withUser(adminUsername).password(adminPassword).roles("ADMIN");
+                .withUser(adminUsername).password(adminPassword).roles("ADMIN_ROLE");
     }
 
     @Bean

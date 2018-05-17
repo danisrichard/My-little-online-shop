@@ -7,13 +7,13 @@ import java.util.Map;
 
 public interface ShoppingCartService {
 
-    void addProduct(Product product);
+    void addProductToCart(Product product);
 
-    void removeProduct(Product product);
+    void removeProductFromCart(Product product);
 
-    Map<Product, Integer> getProductsInCart();
+    Map<Product, Integer> getAllProductsInCart();
 
-    BigDecimal getTotal();
+    BigDecimal getTotalProductsValue();
 
     void incrementProductQuantity(Product product, int quanity);
 }

@@ -10,7 +10,7 @@ public class LoginPageController {
     @GetMapping("/login")
     public String login(Principal principal) {
         if (principal != null) {
-            return "/home";
+            return "redirect:/home";
         }
         return "/login";
     }
