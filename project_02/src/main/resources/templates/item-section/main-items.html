@@ -13,12 +13,12 @@
                 </div>
                 <div>
                     <div class="uk-card-body">
-                        <h3 class="uk-card-title" th:text="${product.name}"></h3>
-                        <h4 th:text="${product.description}" class=""></h4>
-                        <div th:inline="text" class="">Ár: [[${product.price}]] $</div>
-                        <div th:inline="text" class="">Raktár: [[${product.quantity}]]</div>
+                        <h4 class="uk-card-title" th:text="${product.name}"></h4>
+                        <p th:text="${product.description}" class=""></p>
+                        <div th:inline="text" class="uk-margin-small">Ár: [[${product.price}]] $</div>
+                        <div th:inline="text" class="uk-margin-small">Darabszám: [[${product.quantity}]]</div>
                         <a th:href="@{'/shoppingcart/addProductItem/{id}'(id=${product.id}) }">
-                            <button type="button" class="uk-button" th:text="Kosárba"></button>
+                            <button type="button" class="uk-button uk-button-default" th:text="Kosárba"></button>
                         </a>
                     </div>
                 </div>

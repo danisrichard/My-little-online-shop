@@ -5,19 +5,27 @@
 <body>
 <div id="navbar" class="uk-padding-small" th:replace="fragments/navbar::navbar"></div>
 <div class="uk-container">
-    <h2 class="uk-padding-large" th:text="#{cart.cart-name}"></h2>
-    <div th:each="map : ${shopProducts}">
-        <div th:each="mapEntry : ${map}">
-            <span th:text="${mapEntry.key}"></span> ->
-            <span th:text="${mapEntry.value}"></span>
+    <div class="uk-margin">
+        <div th:each="map : ${shopProducts}">
+            <div th:each="mapEntry : ${map}">
+                <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-4@s uk-margin-large" uk-scrollspy="target: > div; cls:uk-animation-fade; delay: 500" uk-grid>
+                    <div class="uk-card-media-left uk-cover-container">
+                        <img  src="https://store.storeimages.cdn-apple.com/4976/as-images.apple.com/is/image/AppleInc/aos/published/images/3/8/38/stainless/38-stainless-milanese-silver-1up?wid=1673&hei=1353&fmt=jpeg&qlt=95&op_usm=0.5,0.5&.v=1504031913562"
+                             alt="not_found"  uk-cover>
+                        <canvas width="600" height="400"></canvas>
+                    </div>
+                    <div>
+                        <div class="uk-card-body">
+                            <h3 class="uk-card-title">Media Left</h3>
+                            <p th:text="${mapEntry.key}"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div th:text="#{totalValue}">
-
-    </div>
-    <a>
-        <button th:text="Véglegesítés"></button>
-    </a>
+    <button class="uk-button uk-button-primary uk-button-large uk-align-center">Véglegesítés</button>
 </div>
+<footer th:replace="fragments/footer :: footer"></footer>
 </body>
 </html>
