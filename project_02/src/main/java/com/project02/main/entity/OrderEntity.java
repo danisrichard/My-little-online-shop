@@ -1,9 +1,7 @@
 package com.project02.main.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Collections;
 
 //rendelés osztály, ebben majd a productok gyüjtő helye lesz
 
@@ -14,5 +12,4 @@ public class OrderEntity {
 	@Id
 	@Column(name="order_id")
 	private Long orderid;
-
 }

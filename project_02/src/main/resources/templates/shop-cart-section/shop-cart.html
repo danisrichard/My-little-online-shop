@@ -6,7 +6,18 @@
 <div id="navbar" class="uk-padding-small" th:replace="fragments/navbar::navbar"></div>
 <div class="uk-container">
     <h2 class="uk-padding-large" th:text="#{cart.cart-name}"></h2>
+    <div th:each="map : ${shopProducts}">
+        <div th:each="mapEntry : ${map}">
+            <span th:text="${mapEntry.key}"></span> ->
+            <span th:text="${mapEntry.value}"></span>
+        </div>
+    </div>
+    <div th:text="#{totalValue}">
 
+    </div>
+    <a>
+        <button th:text="Véglegesítés"></button>
+    </a>
 </div>
 </body>
 </html>

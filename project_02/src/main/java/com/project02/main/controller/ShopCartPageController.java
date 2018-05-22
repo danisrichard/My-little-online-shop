@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class ShopCartPageController {
@@ -21,29 +23,37 @@ public class ShopCartPageController {
     @Autowired
     private ProductService productService;
 
-    @GetMapping("/shoppingcart")
-    public String shoppingCart(Model model){
+    @GetMapping("/shop-cart-element")
+    public String shoppingCart(Model model) {
 
         model.addAttribute("shopProducts", shoppingCartService.getAllProductsInCart());
-        model.addAttribute("totalValue",shoppingCartService.getTotalProductsValue());
-        return null;
+
+        /*
+        Map<Product, Integer> listofProducts = shoppingCartService.getAllProductsInCart();
+        Stream.of(listofProducts.toString()).forEach(System.out::println);
+        */
+
+        model.addAttribute("totalValue", shoppingCartService.getTotalProductsValue());
+
+        return "shop-cart-section/shop-cart";
     }
 
-    @GetMapping("/addProductItem")
-    public String addProductToCart(@PathVariable("itemId") Long productId){
+    @RequestMapping(value = "/shoppingcart/addProductItem/{id}", method = RequestMethod.GET)
+    public String addProductToCart(@PathVariable Long id) {
 
-        logger.info("productID: addtoCart: " + productId);
+        logger.info("productID: addtoCart: " + id);
 
-        productService.findProductById(productId).ifPresent(shoppingCartService::addProductToCart);
-        return null;
+        productService.findProductById(id).ifPresent(shoppingCartService::addProductToCart);
+        return "redirect:/home";
     }
 
-    @GetMapping("/removeProductItem")
-    public String removeProductFromCart(@PathVariable("itemId") Long productId){
+    @RequestMapping(value = "/shoppingcart/removeProductItem/{id}", method = RequestMethod.GET)
+    public String removeProductFromCart(@PathVariable Long id) {
 
-        logger.info("productID: removeFromCart: " + productId);
+        logger.info("productID: removeFromCart: " + id);
 
-        productService.findProductById(productId).ifPresent(shoppingCartService::removeProductFromCart);
-        return null;
+        productService.findProductById(id).ifPresent(shoppingCartService::removeProductFromCart);
+
+        return "redirect:/shop-cart-element";
     }
 }

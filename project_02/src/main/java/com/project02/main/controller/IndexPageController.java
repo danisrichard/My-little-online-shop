@@ -28,7 +28,7 @@ public class IndexPageController {
 	@Autowired
 	private ProductService productService;
 
-	@GetMapping("/")
+	@GetMapping(value={"/home","/",""})
 	public String loadIndexPage(@RequestParam("page") Optional<Integer> pageNumb,Model model) {
 
 		int ePage = (pageNumb.orElse(0) < 1) ? INITIAL_PAGE : pageNumb.get() - 1;

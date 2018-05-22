@@ -16,4 +16,5 @@ public interface ShoppingCartService {
     BigDecimal getTotalProductsValue();
 
     void incrementProductQuantity(Product product, int quanity);
+
 }

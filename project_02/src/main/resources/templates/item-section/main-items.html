@@ -17,6 +17,9 @@
                         <h4 th:text="${product.description}" class=""></h4>
                         <div th:inline="text" class="">Ár: [[${product.price}]] $</div>
                         <div th:inline="text" class="">Raktár: [[${product.quantity}]]</div>
+                        <a th:href="@{'/shoppingcart/addProductItem/{id}'(id=${product.id}) }">
+                            <button type="button" class="uk-button" th:text="Kosárba"></button>
+                        </a>
                     </div>
                 </div>
             </div>

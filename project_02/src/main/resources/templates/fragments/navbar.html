@@ -1,9 +1,12 @@
 <nav xmlns:th="http://www.thymeleaf.org"
      th:fragment="navbar"
      class="uk-navbar-container" uk-navbar>
+
+    <!-- LEFT SECTION -->>
+
     <div class="uk-navbar-left">
         <ul class="uk-navbar-nav">
-            <li class="uk-active"><a href="#">Active</a></li>
+            <li class="uk-active"><a th:href="@{/home}" th:text="Főoldal"></a></li>
             <li>
                 <a href="#">Parent</a>
                 <div class="uk-navbar-dropdown">
@@ -15,23 +18,42 @@
                 </div>
             </li>
             <li><a href="#">Item</a></li>
+            <li><a th:text="Nyomkövetés" th:href="@{/ordertrack}"></a></li>
         </ul>
-
     </div>
+
+    <!-- RIGHT SECTION -->>
+
     <div class="uk-navbar-right">
-        <div class="uk-navbar-item">
-            <span uk-icon="user"></span>
-        </div>
-        <div class="uk-navbar-item uk-margin-large-right">
-                <button class="uk-button uk-button-default" type="button"><span uk-icon="cart">
-            </span></button>
-            <!--
-                <div uk-dropdown="mode: click" class="uk-width-large">
-                        <h2 th:text="#{cart.actual-item}"></h2>
-                        <div th:replace="shop_cart/shop-cart-review-mode" id="cart-review"></div>
-                        <button class="uk-button uk-button-default" th:text="#{cart.buy-it}"> </button>
+
+        <!-- USER -->
+
+        <ul class="uk-navbar-nav">
+
+            <li>
+                <a><span uk-icon="user"></span></a>
+                <div class="uk-navbar-dropdown">
+                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                        <li class="uk-active"><a th:href="@{/usersettings}">Felhasználó beállításai</a></li>
+                        <li><a href="#">Kijelentkezés</a></li>
+                    </ul>
                 </div>
-                -->
+            </li>
+
+            <li>
+                <a th:href="@{/login}">
+                    <span th:text="Login"></span>
+                </a>
+            </li>
+
+            <!-- CART -->
+
+            <div class="uk-navbar-item uk-margin-large-right">
+                <a th:href="@{/shop-cart-element}">
+                    <button class="uk-button uk-button-default" type="button"><span uk-icon="cart"></span>
+                    </button>
+                </a>
             </div>
+        </ul>
     </div>
 </nav>

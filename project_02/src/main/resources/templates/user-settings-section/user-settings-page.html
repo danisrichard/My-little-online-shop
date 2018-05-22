@@ -6,7 +6,10 @@
 <div id="navbar" class="uk-padding-small" th:replace="fragments/navbar::navbar"></div>
 <div class="uk-container">
     <h2 class="uk-padding-large" th:text="#{user.settings-name}"></h2>
-
+    <div th:object="${user}">
+        <!--<div> <p th:text="${user.getEmail()}"></p>
+        </div>-->
+    </div>
 </div>
 </body>
 </html>

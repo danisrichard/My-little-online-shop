@@ -3,6 +3,8 @@ package com.project02.main.service.impl;
 import com.project02.main.dao.ProductRepository;
 import com.project02.main.entity.Product;
 import com.project02.main.service.ShoppingCartService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
@@ -21,6 +23,8 @@ import static org.springframework.web.context.WebApplicationContext.*;
 @Transactional
 public class ShoppingCartServiceImpl implements ShoppingCartService {
 
+    private static final Logger logger = LogManager.getLogger(ShoppingCartServiceImpl.class);
+
     @Autowired
     private ProductRepository productRepository;
 
@@ -28,6 +32,9 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 
     @Override
     public void addProductToCart(Product product) {
+
+        logger.info("---> addProductToCart " + product.getName() + " - " + product.getId());
+
         if (productListMap.containsKey(product)) {
             productListMap.replace(product, productListMap.get(product) + 1);
         } else {
@@ -67,4 +74,5 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
             }
         }
     }
+
 }
