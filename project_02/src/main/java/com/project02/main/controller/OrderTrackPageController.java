@@ -6,10 +6,12 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class OrderTrackPageController {
@@ -20,16 +22,27 @@ public class OrderTrackPageController {
     OrderTrackService orderTrackService;
 
     @GetMapping("/ordertrack")
-    public String findOrder(@PathVariable long orderId){
+    public String findOrder(@PathVariable long orderId,Model model){
 
-        List<OrderEntity> productList = orderTrackService.getProductsByID(orderId);
+        Optional<OrderEntity> productList = orderTrackService.getProductsByID(orderId);
+
+        if(!productList.isPresent()){
+            model.addAttribute("productList",productList);
+        }
+        model.addAttribute("message","Nincs ilyen rendelés ezen az azonosító alatt: " + orderId);
 
         return "item-section/find-order";
     }
 
     @GetMapping("/deleteorder")
-    public String deleteOrder(@PathVariable long orderId){
+    public String deleteOrder(@PathVariable long orderId,Model model){
 
-        return null;
+        if(!orderTrackService.getProductsByID(orderId).isPresent()){
+            orderTrackService.deleteOrder(orderId);
+            model.addAttribute("message","Sikeres törlés: " + orderId);
+        }
+        model.addAttribute("message","Sikertelen törlés: " + orderId);
+
+        return "item-section/find-order";
     }
 }

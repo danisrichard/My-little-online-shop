@@ -2,11 +2,11 @@ package com.project02.main.service;
 
 import com.project02.main.entity.OrderEntity;
 
-import java.util.List;
+import java.util.Optional;
 
 public interface OrderTrackService {
 
-    List<OrderEntity> getProductsByID(Long orderId);
+    Optional<OrderEntity> getProductsByID(Long orderId);
 
     void deleteOrder(Long orderId);
 

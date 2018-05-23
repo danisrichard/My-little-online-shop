@@ -9,6 +9,7 @@ import com.project02.main.dao.OrderTrackRepository;
 import com.project02.main.service.OrderTrackService;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class OrderTrackServiceImpl implements OrderTrackService {
@@ -17,12 +18,14 @@ public class OrderTrackServiceImpl implements OrderTrackService {
 	private OrderTrackRepository orderTrackRepository;
 
 	@Override
-	public List<OrderEntity> getProductsByID(Long orderId) {
-		return null;
+	public Optional<OrderEntity> getProductsByID(Long orderId) {
+
+		Optional<OrderEntity> orderEntityList = orderTrackRepository.findById(orderId);
+		return orderEntityList;
 	}
 
 	@Override
 	public void deleteOrder(Long orderId) {
-
+		orderTrackRepository.deleteById(orderId);
 	}
 }
