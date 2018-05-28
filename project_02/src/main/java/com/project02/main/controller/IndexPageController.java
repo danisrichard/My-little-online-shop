@@ -10,14 +10,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
 @Controller
 public class IndexPageController {
@@ -41,5 +37,25 @@ public class IndexPageController {
 		model.addAttribute("pager", pager);
 
 		return "index";
+	}
+
+	@GetMapping("/zsuli-index")
+	public String loadZsuliSection(){
+		return "zsuli-section/index-zs";
+	}
+
+	@GetMapping("/zsuli-index/bemutatkozas")
+	public String loadZsuliPreview(){
+		return "zsuli-section/bemutatkozas";
+	}
+
+	@GetMapping("/zsuli-index/szolgaltatasok")
+	public String loadContatctSide(){
+		return "zsuli-section/zs-services";
+	}
+
+	@GetMapping("/zsuli-index/elerhetoseg")
+	public String loadPageServices(){
+		return "zsuli-section/elerhetoseg";
 	}
 }

@@ -48,7 +48,8 @@ CREATE TABLE order_product_table(  -- rendelés tábla és product segéd tábla
 CREATE TABLE order_table(  --rendelés tábla
     order_id VARCHAR2(150) PRIMARY KEY,  --UNIQUE
     order_date TIMESTAMP,
-    user_id VARCHAR2(150)
+    user_id VARCHAR2(150),
+    current_order_position VARCHAR2(150)
 );
 
 COMMIT;

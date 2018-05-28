@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+<body>
+<div class="uk-position-relative">
+    <div class="uk-position-large uk-position-center-right uk-text-muted" uk-scrollspy="cls: uk-animation-slide-bottom-medium; target: > blockquote ; delay: 800; repeat: false">>
+        <blockquote cite="#">
+            <p class="uk-margin-small-bottom" style="color:white"> „Két csapdát kell elkerülnünk az igazsághoz vezető
+                úton. <br>
+                Az egyik, ha nem megyünk végig, a másik, ha el sem indulunk.” </p>
+            <footer style="color:lightgray"> Buddha</footer>
+        </blockquote>
+    </div>
+
+    <img src="/img/zsuli-sec/index-image.jpg" alt="not found">
+    <div class="uk-position-top">
+        <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
+            <div class="uk-margin-left uk-navbar-left" uk-scrollspy="cls: uk-animation-fade; target: > ul > li; delay: 500; repeat: false">
+                    <ul class="uk-navbar-nav">
+                        <li class="uk-active"><a href="#">Főoldal</a></li>
+                        <li><a href="/zsuli-index/bemutatkozas">Bemutatkozás</a></li>
+                        <li><a href="/zsuli-index/szolgaltatasok">Szolgáltatások</a></li>
+                        <li><a href="/zsuli-index/elerhetoseg">Elérhetőség</a></li>
+                    </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+
+<footer th:replace="fragments/zsuli-sec/footer :: footer"></footer>
+</body>
+</html>

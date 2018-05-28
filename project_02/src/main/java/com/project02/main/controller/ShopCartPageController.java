@@ -26,7 +26,7 @@ public class ShopCartPageController {
     @Autowired
     private ProductService productService;
 
-    private int itemsOnPage = 6;
+    private final int itemsOnPage = 6;
 
     @GetMapping("/shop-cart-element")
     public String shoppingCart(Model model,HttpServletRequest request) {
@@ -42,7 +42,7 @@ public class ShopCartPageController {
         logger.info("productID: addtoCart: " + id);
 
         int currentPageCounter = 1;
-        while(id > itemsOnPage){
+        while(id >= itemsOnPage){
             id -= itemsOnPage;
             currentPageCounter++;
         }
