@@ -50,6 +50,26 @@ public class User {
     @JoinTable(name = "users_role_table", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Collection<Roles> roles;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "users_order_table", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name ="order_Id"))
+    private Collection<OrderEntity> order;
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public Collection<OrderEntity> getOrder() {
+        return order;
+    }
+
+    public void setOrder(Collection<OrderEntity> order) {
+        this.order = order;
+    }
+
     public Long getId() {
         return id;
     }

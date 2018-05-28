@@ -22,16 +22,18 @@ public class OrderTrackPageController {
     OrderTrackService orderTrackService;
 
     @GetMapping("/ordertrack")
-    public String findOrder(@PathVariable long orderId,Model model){
+    public String findOrder(Model model){
 
+        /*
         Optional<OrderEntity> productList = orderTrackService.getProductsByID(orderId);
 
-        if(!productList.isPresent()){
+        if(productList.isPresent()){
             model.addAttribute("productList",productList);
         }
         model.addAttribute("message","Nincs ilyen rendelés ezen az azonosító alatt: " + orderId);
+        */
 
-        return "item-section/find-order";
+        return "order-find-section/find-order";
     }
 
     @GetMapping("/deleteorder")

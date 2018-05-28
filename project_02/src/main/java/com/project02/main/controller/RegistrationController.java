@@ -2,6 +2,8 @@ package com.project02.main.controller;
 
 import com.project02.main.entity.User;
 import com.project02.main.service.UserService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,8 +16,11 @@ import javax.validation.Valid;
 @Controller
 public class RegistrationController {
 
+    private static final Logger logger = LogManager.getLogger(RegistrationController.class);
+
     @Autowired
     private UserService userService;
+
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String registration(Model model) {
@@ -32,6 +37,7 @@ public class RegistrationController {
 
             model.addAttribute("successMessage", "User has been registered successfully");
             model.addAttribute("user", new User());
+
             return "/login";
         }
 

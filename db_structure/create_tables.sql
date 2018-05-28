@@ -35,9 +35,19 @@ CREATE TABLE product_table (
     price VARCHAR2(150)
 );
 
-CREATE TABLE order_table(
-    order_id VARCHAR2(150) PRIMARY KEY,  
-    item_id VARCHAR2(150) ,
+CREATE TABLE users_order_table(   -- user és rendelés_id segéd tábla
+    user_id VARCHAR2(150),
+    order_id VARCHAR2(150)
+);
+
+CREATE TABLE order_product_table(  -- rendelés tábla és product segéd tábla
+    product_id VARCHAR2(150),
+    order_id VARCHAR2(150)
+);
+
+CREATE TABLE order_table(  --rendelés tábla
+    order_id VARCHAR2(150) PRIMARY KEY,  --UNIQUE
+    order_date TIMESTAMP,
     user_id VARCHAR2(150)
 );
 

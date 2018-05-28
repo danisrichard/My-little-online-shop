@@ -5,9 +5,22 @@
 <body>
 <div id="navbar" class="uk-padding-small" th:replace="fragments/navbar::navbar"></div>
 <div class="uk-container">
-    <h2 class="uk-padding-large" th:text="#{order.find-name}"></h2>
-
-    <div id="order-product-list" th:replace="order-find-section/order-product-list"></div>
+    <div class="uk-text-center">
+        <h2 class="uk-padding-large" th:text="#{order.find-name}"></h2>
+        <form>
+            <div class="uk-margin">
+                <div class="uk-inline">
+                    <a class="uk-form-icon" href="#" uk-icon="icon: pencil"></a>
+                    <input class="uk-input" type="text">
+                </div>
+                <a>
+                    <button class="uk-button uk-button-default">Keresés</button>
+                </a>
+            </div>
+        </form>
+    </div>
+   <!-- <div id="order-product-list" th:replace="order-find-section/order-product-list"></div> -->
 </div>
+<footer th:replace="fragments/footer :: footer"></footer>
 </body>
 </html>
